@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta name="viewport" content="width=device-width, initial-scal=1.0" />
+    <meta charset="utf-8" />
+    <title>WeHelp-Stage1-Week1</title>
+    <link rel="stylesheet" href="week1.css">
+</head>
+<body> 
+    <header> <!--導覽列-->   
+        <div> 
+            <div>My Website</div>
+            <div class="navbar">                     
+                <div>Item1</div>
+                <div>Item2</div>
+                <div>Item3</div>
+                <div>Item4</div>                
+            </div>
+            <div class="hamber">                     
+                <button onclick="show_menu()" class="menu-btn">&#9776;</button>
+            </div>            
+        <!-- 新增 popup menu -->
+        <div id="popup-menu" class="popup-menu">
+            <div class="popup-header">
+                <button onclick="close_menu()" class="close-btn">&times;</button>
+            </div>
+            <div class="popup-content">
+                <div>Item1</div>
+                <div>Item2</div>
+                <div>Item3</div>
+                <div>Item4</div>
+            </div>
+        </div>
+        <script>
+            function show_menu() {
+                const menu = document.getElementById('popup-menu');
+                menu.classList.add('show');
+            }
+        
+            function close_menu() {
+                const menu = document.getElementById('popup-menu');
+                menu.classList.remove('show');
+            }
+        </script>
+    </header>
+    <main>  
+        <section class="welcome"> <!--歡迎區塊--><h1>Welcome to MyHome</h1></section>
+        <section class="bars desktop"> <!--三個bar--> <!--桌機版-->   
+            <div class="bar full">
+                <img src="image/lake.jpg" alt="Bar 1">
+                <p>Promotion 1</p>
+            </div>
+        <!-- 把bar改用grid方法-->
+            <div class="gridbar">
+                <div class="grid bar two-third">
+                    <img src="image/lake.jpg" alt="Bar 2">
+                    <p>Promotion 2</p>
+                </div>
+                <div class="grid bar one-third">
+                    <img src="image/lake.jpg" alt="Bar 3">
+                    <p>Promotion 3</p> 
+                </div>
+            </div>
+        </section>
+        <section class="bars tablet"> <!--三個bar--> <!--平板電腦--> 
+            <div class="twobars">
+                <div class="bar full">
+                    <img src="image/lake.jpg" alt="Bar 1">
+                    <p>Promotion 1</p>
+                </div>
+                <div class="bar two-third">
+                    <img src="image/lake.jpg" alt="Bar 2">
+                    <p>Promotion 2</p>
+                </div>
+            </div>
+            <div class="bar one-third">
+                <img src="image/lake.jpg" alt="Bar 3">
+                <p>Promotion 3</p> 
+            </div>
+        </section>
+        <section class="bars mobile"> <!--三個bar--> <!--手機--> 
+            <div>
+                <div class="bar full">
+                    <img src="image/lake.jpg" alt="Bar 1">
+                    <p>Promotion 1</p>
+                </div>
+                <div class="bar two-third">
+                    <img src="image/lake.jpg" alt="Bar 2">
+                    <p>Promotion 2</p>
+                </div>
+                <div class="bar one-third">
+                    <img src="image/lake.jpg" alt="Bar 3">
+                    <p>Promotion 3</p> 
+                </div>
+            </div>
+        </section>
+        <section class="content-blocks"> <!--10個主要內容--> 
+            <div class="titles">
+                <div class="title one">
+                    <img src="image/lake.jpg" alt="Title 1">
+                    <p>Title 1</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title two">
+                    <img src="image/lake.jpg" alt="Title 2">
+                    <p>Title 2</p>
+                    <!-- 實心星 -->
+                    <span>&#9733;</span> <!-- ★ -->
+                </div>
+                <div class="title three">
+                    <img src="image/lake.jpg" alt="Title 3">
+                    <p>Title 3</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title four">
+                    <img src="image/lake.jpg" alt="Title 4">
+                    <p>Title 4</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title five">
+                    <img src="image/lake.jpg" alt="Title 5">
+                    <p>Title 5</p>
+                    <span>&#9733;</span>
+                </div>          
+                <div class="title six">
+                    <img src="image/lake.jpg" alt="Title 6">
+                    <p>Title 6</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title seven">
+                    <img src="image/lake.jpg" alt="Title 7">
+                    <p>Title 7</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title eight">
+                    <img src="image/lake.jpg" alt="Title 8">
+                    <p>Title 8</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title nine">
+                    <img src="image/lake.jpg" alt="Title 9">
+                    <p>Title 9</p>
+                    <span>&#9733;</span>
+                </div>
+                <div class="title ten">
+                    <img src="image/lake.jpg" alt="Title 10">
+                    <p>Title 10</p>
+                    <span>&#9733;</span>
+                </div>
+            </div>
+        </section> 
+
+
+
+
+    </main>
+
+</body>
+</html>
