@@ -1,0 +1,306 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Header Section */
+header {
+    background-color: #f5f5f5;
+}
+
+header > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+/* Welcome Section */
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d0eaff;
+    height: 250px;
+}
+
+/* Promotion Bars Section */
+.bars {
+     max-width: 1200px;
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+     margin: 40px auto 0;  /* 上方40px，左右auto，下方0 */
+     gap: 20px;
+}
+
+/* Common Bar Styles */
+.bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #d0eaff;
+    padding: 0;  /* 移除內邊距 */
+}
+
+.bar img {
+    width: 80px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    object-fit: cover; /* 確保圖片不會變形 */
+    display: block;  /* 移除圖片的行內元素特性 */
+}
+
+.bar p {
+    margin: 0;
+    padding: 10px;  /* 只給文字加上內邊距 */
+}
+
+/* Second Row Container (Promotion 2 & 3) */
+.twobars {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* 把bar改用grid方法 */
+.gridbar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.grid.bar.two-third {
+    grid-column: span 4;
+}
+
+.grid.bar.one-third {
+    grid-column: span 2;
+}
+
+/* Content blocks */
+.titles {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto;
+    margin: 20px auto 20px;
+    max-width: 1200px;   
+    gap: 20px;
+}
+
+.title {
+    background-color: #d0eaff;
+    position: relative;  /* 設為相對定位，作為子元素的定位參考 */
+}
+
+/* 圖片設定 */
+.titles img {
+    width: 100%; 
+    height: 100px; 
+    object-fit: cover;  
+    display: block;  /* 移除圖片下方的空隙 */
+}
+
+.titles p {
+    position: absolute;  /* 絕對定位 */
+    bottom: 0;          /* 對齊底部 */
+    margin: 0;
+    padding: 10px;     /* 文字內距 */
+    color: white;      /* 文字顏色 */
+    background: rgba(0, 0, 0, 0.5);  /* 半透明背景，提高文字可讀性 */
+    width: 100%;       /* 寬度100% */
+    box-sizing: border-box;  /* 確保padding不會增加寬度 */
+    text-align: center;  /* 文字置中 */
+    white-space: nowrap;        /* 不換行 */
+    overflow: hidden;            /* 隱藏溢出內容 */
+    text-overflow: ellipsis;     /* 顯示刪節號 */    
+}
+
+
+.titles span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 5px;
+    padding-top: 0;
+    color: yellow;
+    box-sizing: border-box;
+}
+
+
+
+
+@media (min-width:1201px) {
+    /* 不同裝置的顯示 */
+    .desktop {display: block;}
+    .tablet {display: none;}
+    .mobile {display: none;}
+    .hamber {display: none;}
+    
+    /* 設定title的比例 */ 
+    .title.one, .title.six {
+    grid-column: span 2;
+    }
+    
+    /* bar Widths */
+    .bar.full {
+        flex: none;
+        width: 100%;  /* 使用百分比代替固定寬度 */
+    }
+
+    .bar.two-third {
+        flex: 2;  /* 占用 2 份寬度 */
+    }
+
+    .bar.one-third {
+        flex: 1;  /* 占用 1 份寬度 */
+    }
+    
+    .bars, .titles {
+        width: min(90%, 1200px);
+        margin: 20px auto;  /* 統一兩個區塊的外邊距 */
+        padding: 0;  /* 確保沒有內邊距 */
+    }
+}
+
+
+@media (min-width: 601px) and (max-width:1200px) {
+    /* 不同裝置的顯示 */
+    .desktop {display: none;}
+    .tablet {display: block;}  
+    .mobile {display: none;}
+    .hamber {display: none;}     
+
+    /* bar Widths */
+    .bar.full {
+        flex: 1;
+    }
+
+    .bar.two-third {
+        flex: 1;
+    }
+
+    .bar.one-third {
+        flex: none;
+        width: 100%;  /* 占用 1 份寬度 */
+    }
+    
+    .titles,.bars {
+        width: min(90%, 1200px);
+    }
+
+    .titles {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+    } 
+
+    .title.nine, .title.ten {
+        grid-column: span 2;
+    }
+
+}
+
+@media (min-width: 361px) and (max-width:600px) {
+    /* 不同裝置的顯示 */
+    .desktop {display: none;}
+    .tablet {display: none;}
+    .mobile {display: block;}
+    .navbar {display: none;}
+    
+    /* bar Widths */
+    .bar.full,
+    .bar.two-third,
+    .bar.one-third {
+        flex: none;
+        width: 100%;
+    }
+
+    .bar.two-third {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .titles,.bars {
+        width: 90%;
+    }
+
+    .titles {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+    } 
+
+    .hamber img {
+        height: 23px;
+        width: 23px;        
+    }
+}
+
+/* Popup Menu Styles */
+.popup-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* 初始位置在螢幕右側外 */
+    width: 300px;
+    height: 100vh;
+    background-color: #f5f5f5;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.popup-menu.show {
+    right: 0; /* 顯示時移動到螢幕內 */
+}
+
+.popup-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.popup-content {
+    padding: 20px;
+}
+
+.popup-content div {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-content div:last-child {
+    border-bottom: none;
+}
+
+/* 修改現有的 menu-btn 樣式 */
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
