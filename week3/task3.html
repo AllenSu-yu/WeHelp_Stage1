@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="utf-8"/>
+        <title>Task3</title>
+    </head>
+    <body>
+        <div onclick="getData();">點我</div>
+        <div onclick="insertName()" id="name">景點名稱</div>
+        <div onclick="insertImage()" id="image">景點圖片</div>
+        <!-- <img src="" alt=""> -->
+        <script>
+            function getData(){
+                return Promise.all([fetch("https://cwpeng.github.io/test/assignment-3-1"),
+                fetch("https://cwpeng.github.io/test/assignment-3-2")
+            ])
+            .then(function(response){
+                return Promise.all(response.map(r => r.json()));
+            })
+            .then(function(dataArray){
+                console.log(dataArray[0])
+                console.log(dataArray[1])
+                return dataArray;
+            })
+
+            }
+
+            let name_dic = {}
+            function insertName(){
+                getData().then(function(dataArray){
+                    for (let i=0; i<dataArray[0].rows.length; i++){
+                        let key = dataArray[0].rows[i].serial;
+                        let value = dataArray[0].rows[i].sname;
+                        name_dic[key] = value;
+                    }
+
+                    let nameDiv = document.querySelector("#name")
+                    let newName = document.createElement("span")
+                    newName.textContent = Object.values(name_dic)[0]
+                    nameDiv.appendChild(newName)
+
+                })
+                
+            }
+
+
+            let image_dic = {}
+            function insertImage(){
+                getData().then(function(dataArray){
+                    for (let i=0; i<dataArray[1].rows.length; i++){
+                        let key = dataArray[1].rows[i].serial;
+                        let host = dataArray[1].host
+                        let paths = dataArray[1].rows[i].pics;
+                        let firstPath= paths.split(".jpg")
+                        let fullPath= host + firstPath[0] +".jpg"
+                        image_dic[key] = fullPath;
+                    }
+
+                    let imageDiv = document.querySelector("#image")
+                    let newImage = document.createElement("img")
+                    newImage.src = Object.values(image_dic)[0]
+                    imageDiv.appendChild(newImage)
+
+                })
+
+            }
+            insertName()
+            insertImage()
+        </script>
+    </body>
+
+
+
+
+
+
+
+
+</html>
+
+<!-- let str = "/d_upload_ttn/sceneadmin/pic/11000725.jpg/d_upload_ttn/sceneadmin/pic/11000726.jpg/d_upload_ttn/sceneadmin/pic/11000727.jpg"
+let firstPath = str.split("/d_upload_ttn/sceneadmin/pic/")[1].split(".jpg")[0]
+firstPath = "/d_upload_ttn/sceneadmin/pic/" + firstPath + ".jpg"
+console.log(firstPath) -->

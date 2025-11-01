@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>WeHelp-Stage1-Week1</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body> 
+    <header> <!--導覽列-->   
+        <div> 
+            <div>My Website</div>
+            <div class="navbar">                     
+                <div>Item1</div>
+                <div>Item2</div>
+                <div>Item3</div>
+                <div>Item4</div>                
+            </div>
+            <div class="hamber">                     
+                <button onclick="show_menu()" class="menu-btn">&#9776;</button>
+            </div>
+        </div>           
+        <!-- 新增 popup menu -->
+        <div id="popup-menu" class="popup-menu">
+            <div class="popup-header">
+                <button onclick="close_menu()" class="close-btn">&times;</button>
+            </div>
+            <div class="popup-content">
+                <div>Item1</div>
+                <div>Item2</div>
+                <div>Item3</div>
+                <div>Item4</div>
+            </div>
+        </div>
+        <script>
+            function show_menu() {
+                const menu = document.getElementById('popup-menu');
+                menu.classList.add('show');
+            }
+        
+            function close_menu() {
+                const menu = document.getElementById('popup-menu');
+                menu.classList.remove('show');
+            }
+        </script>
+    </header>
+    <main>  
+        <section class="welcome"> <!--歡迎區塊--><h1>Welcome to MyHome</h1></section>
+        <section class="bars desktop"> <!--三個bar--> <!--桌機版-->   
+            <div id="new" class="bar full">
+                <img id="oldImages" src="image/lake.jpg" alt="Bar 1">
+                <p id="oldName">Promotion 1</p>
+            </div>
+        <!-- 把bar改用grid方法-->
+            <div class="gridbar">
+                <div id="new" class="grid bar two-third">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 2">
+                    <p id="oldName">Promotion 2</p>
+                </div>
+                <div id="new" class="grid bar one-third">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 3">
+                    <p id="oldName">Promotion 3</p> 
+                </div>
+            </div>
+        </section>
+        <section class="bars tablet"> <!--三個bar--> <!--平板電腦--> 
+            <div class="twobars">
+                <div id="new" class="bar full">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 1">
+                    <p id="oldName">Promotion 1</p>
+                </div>
+                <div id="new" class="bar two-third">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 2">
+                    <p id="oldName">Promotion 2</p>
+                </div>
+            </div>
+            <div id="new" class="bar one-third">
+                <img id="oldImages" src="image/lake.jpg" alt="Bar 3">
+                <p id="oldName">Promotion 3</p> 
+            </div>
+        </section>
+        <section class="bars mobile"> <!--三個bar--> <!--手機--> 
+            <div>
+                <div id="new" class="bar full">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 1">
+                    <p id="oldName">Promotion 1</p>
+                </div>
+                <div id="new" class="bar two-third">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 2">
+                    <p id="oldName">Promotion 2</p>
+                </div>
+                <div id="new" class="bar one-third">
+                    <img id="oldImages" src="image/lake.jpg" alt="Bar 3">
+                    <p id="oldName">Promotion 3</p> 
+                </div>
+            </div>
+        </section>
+        <section class="content-blocks"> <!--10個主要內容--> 
+            <div class="titles">
+                <div id="new" class="title one">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 1">
+                    <p id="oldName">Title 1</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title two">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 2">
+                    <p id="oldName">Title 2</p>
+                    <!-- 實心星 -->
+                    <span>&#9733;</span> <!-- ★ -->
+                </div>
+                <div id="new" class="title three">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 3">
+                    <p id="oldName">Title 3</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title four">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 4">
+                    <p id="oldName">Title 4</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title five">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 5">
+                    <p id="oldName">Title 5</p>
+                    <span>&#9733;</span>
+                </div>          
+                <div id="new" class="title six">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 6">
+                    <p id="oldName">Title 6</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title seven">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 7">
+                    <p id="oldName">Title 7</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title eight">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 8">
+                    <p id="oldName">Title 8</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title nine">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 9">
+                    <p id="oldName">Title 9</p>
+                    <span>&#9733;</span>
+                </div>
+                <div id="new" class="title ten">
+                    <img id="oldImages" src="image/lake.jpg" alt="Title 10">
+                    <p id="oldName">Title 10</p>
+                    <span>&#9733;</span>
+                </div>
+            </div>
+        </section> 
+
+        <script>
+            let name_dic = {};
+            let image_dic = {};                    
+            function getData(){
+                return Promise.all([fetch("https://cwpeng.github.io/test/assignment-3-1"),
+                fetch("https://cwpeng.github.io/test/assignment-3-2")
+            ])
+            .then(function(response){
+                return Promise.all(response.map(r => r.json()));
+            })
+            .then(function(dataArray){
+                for (let i=0; i<dataArray[0].rows.length; i++){
+                    let key = dataArray[0].rows[i].serial;
+                    let value = dataArray[0].rows[i].sname;
+                    name_dic[key] = value;
+                }
+                
+                image_dic = structuredClone(name_dic);
+
+                let host = dataArray[1].host;
+                for (let i=0; i<dataArray[1].rows.length; i++){
+                    for (let key in image_dic){
+                        if (key === dataArray[1].rows[i].serial) {
+                            let paths = dataArray[1].rows[i].pics;
+                            let firstPath= paths.split(".jpg");
+                            let fullPath= host + firstPath[0] +".jpg";
+                            image_dic[key] = fullPath;
+                        }
+
+                    }
+
+                }
+                    
+            })
+            }
+
+            
+
+
+            function insertName(){               
+                    // 將桌機換成新景點名稱
+                    const desktop_name = document.querySelectorAll(".bars.desktop #new");
+
+                    desktop_name.forEach((name, index) => {
+                        let newP = document.createElement("p");
+                        newP.textContent = Object.values(name_dic)[index];
+                        name.appendChild(newP)                        
+                    });
+
+                    // 將平板換成新景點名稱
+                    const tablet_name = document.querySelectorAll(".bars.tablet #new");
+
+                    tablet_name.forEach((name, index) => {
+                        let newP = document.createElement("p")
+                        newP.textContent = Object.values(name_dic)[index]
+                        name.appendChild(newP)                        
+                    });
+                    
+
+                    // 將手機換成新景點名稱
+                    const mobile_name = document.querySelectorAll(".bars.mobile #new");
+
+                    mobile_name.forEach((name, index) => {
+                        let newP = document.createElement("p")
+                        newP.textContent = Object.values(name_dic)[index]
+                        name.appendChild(newP)                        
+                    });
+
+
+                    //將不分裝置換成新景點名稱
+                    const names = document.querySelectorAll(".content-blocks #new");
+
+                    names.forEach((name, index) => {
+                        let key = index+3
+                        let newP = document.createElement("p")
+                        newP.textContent = Object.values(name_dic)[key]
+                        name.appendChild(newP)                        
+                    });
+
+
+
+                    //隱藏所有舊的名稱
+                    // 選取所有 id 為 "oldName" 的元素
+                    const oldNames = document.querySelectorAll("#oldName");
+
+                    // 遍歷並隱藏每個元素
+                    oldNames.forEach((element) => {
+                        element.style.display = "none";
+                    });
+
+                }
+                
+            
+
+
+
+
+            function insertImage(){                   
+                    // 將桌機換成新景點圖片
+                    const desktop_image = document.querySelectorAll(".bars.desktop #new");
+
+                    desktop_image.forEach((image, index) => {
+                        let newImage = document.createElement("img")
+                        newImage.src = Object.values(image_dic)[index]
+                        image.appendChild(newImage)                        
+                    });
+
+                    // 將平板換成新景點圖片
+                    const tablet_image = document.querySelectorAll(".bars.tablet #new");
+
+                    tablet_image.forEach((image, index) => {
+                        let newImage = document.createElement("img")
+                        newImage.src = Object.values(image_dic)[index]
+                        image.appendChild(newImage)                        
+                    });
+                    
+
+                    // 將手機換成新景點圖片
+                    const mobile_image = document.querySelectorAll(".bars.mobile #new");
+
+                    mobile_image.forEach((image, index) => {
+                        let newImage = document.createElement("img")
+                        newImage.src = Object.values(image_dic)[index]
+                        image.appendChild(newImage)                        
+                    });
+
+
+                    //將不分裝置換成新景點圖片
+                    const images = document.querySelectorAll(".content-blocks #new");
+
+                    images.forEach((image, index) => {
+                        let key = index+3
+                        let newImage = document.createElement("img")
+                        newImage.src = Object.values(image_dic)[key]
+                        image.appendChild(newImage)                        
+                    });
+
+
+
+                    //隱藏所有舊的圖片
+                    // 選取所有 id 為 "oldImages" 的元素
+                    const oldImages = document.querySelectorAll("#oldImages");
+
+                    // 遍歷並隱藏每個元素
+                    oldImages.forEach((element) => {
+                        element.style.display = "none";
+                    });
+
+                }
+                
+            
+
+
+
+
+                getData().then(function() {
+                    insertImage()
+                    insertName()
+                })
+
+        </script>
+
+
+    </main>
+
+</body>
+</html>
