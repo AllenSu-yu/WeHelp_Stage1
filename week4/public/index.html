@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員系統</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header><h1>歡迎光臨，請輸入信箱密碼</h1></header>
+    <h2>登入系統</h2>
+    <div>
+        <div class="login">
+            信箱 <input type="text" id="login-email"/><br/>
+            密碼 <input type="password" id="login-password"><br/>
+            <label for="agreen">同意條款</label>
+            <input type="checkbox" name="agreen" id="agreen"><br/>
+            <button onclick="login()">登入</button>
+        </div>
+    </div>
+    <script>
+        async function login() {
+            const checkbox = document.querySelector("#agreen")
+            if (checkbox.checked){
+                let email=document.querySelector("#login-email").value;
+                let password=document.querySelector("#login-password").value;
+                if (!email|| !password){
+                    alert("請輸⼊信箱和密碼")
+                    window.location="/ohoh?msg=請輸⼊信箱和密碼";
+                    } 
+                    else{
+                        let response=await fetch("/login",{
+                            method:"POST",
+                            body:JSON.stringify({"email":email,"password":password})
+                        });
+                        let result=await response.json();
+                        if (result.ok){
+                            alert("登入成功");
+                            window.location="/member";
+                        }else{
+                            alert("登入失敗")
+                            window.location="/ohoh?msg=信箱或密碼輸⼊錯誤";
+                        }
+                    }
+                }else{
+                alert("請勾選同意條款")
+            }
+        }
+
+    </script>
+    <hr/>
+    <h2>取得旅館資訊</h2>
+    <div>
+        <div class="hotel">
+            編號 <input type="text" id="number"><br/>
+            <button onclick="get_hotel_page()">取得</button>
+
+        </div>
+        <script>
+            async function get_hotel_page() {
+                const number = document.querySelector("#number").value
+                if (!isNaN(number) && number >=1){
+                window.location="/hotel/"+number;
+                }
+                else{
+                    alert("請輸⼊正整數")
+                }
+          
+            }
+        </script>
+    </div>
+
+</body>
+</html>
