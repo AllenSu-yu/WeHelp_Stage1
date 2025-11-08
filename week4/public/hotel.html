@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅館的資訊</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <header>旅館的資訊</header>
+    <div class="hotel_data">查詢不到相關資料</div>
+    <script>
+        async function get_hotel_data() {
+            // 從網址拿到id
+            const path = window.location.pathname; // "/hotel/12"
+            const match = path.match(/\/hotel\/(\d+)/);
+
+            let number;  // 在外面宣告
+            if (match) {
+            number = match[1];
+            }           
+
+            let response = await fetch("/hotel/data/"+number, {
+                method:"GET",
+            });
+            let result= await response.text();
+            console.log(result)
+            // 將拿到的hotel資訊插入
+            const information = document.querySelector(".hotel_data");
+            information.innerHTML = result
+        }
+        get_hotel_data()
+    </script>
+    <div class="backtoHome" style="text-decoration: underline;" onclick="backtoHome()">
+        返回首頁
+    </div>
+    <script>
+        async function backtoHome() {
+            window.location= "/"
+        } 
+    </script>
+</body>
+</html>

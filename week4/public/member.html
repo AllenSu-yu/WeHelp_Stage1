@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>歡迎光臨，這是會員頁</header>
+    <div>恭喜您，成功登入系統</div>
+    <div onclick="logout()" class="logout">登出系統</div>
+    <script>
+        async function check_status() {
+            let response= await fetch("/check_status", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        check_status()
+        
+        async function logout() {
+            const logout_text = document.querySelector(".logout");
+            logout_text.style.color = "red"; 
+
+            let response= await fetch("/logout", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        
+    </script>
+</body>
+</html>
