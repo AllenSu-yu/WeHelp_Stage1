@@ -53,8 +53,7 @@ order by time desc;
 ``` 
 ![insert](./images/task3_03_orderbytimedesc.png)
 
-###  - SELECT total 3 rows, second to fourth, from the member table, in descending order 
-of time.
+###  - SELECT total 3 rows, second to fourth, from the member table, in descending order of time.
 ```sql
 select * from member
 order by time desc
