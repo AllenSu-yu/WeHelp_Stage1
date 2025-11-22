@@ -1,0 +1,47 @@
+header {
+    background-color: rgb(36, 36, 79);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+body > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+body > h2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.login, .signup {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login input[type="text"], 
+.login input[type="password"],
+.signup input[type="text"], 
+.signup input[type="password"]{
+    font-size: 20px; /* 讓輸入框內文字也變大 */
+  }
+
+.login button, .signup button{
+    font-size: inherit;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+ 
+
+body > div.logout {
+    text-decoration: underline;
+}
+

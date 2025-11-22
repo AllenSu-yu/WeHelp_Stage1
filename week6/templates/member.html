@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>歡迎光臨，這是會員頁</header>
+    <div>{{name}}，歡迎登入系統</div>
+    <div onclick="logout()" class="logout">登出系統</div>
+    <script>
+        async function check_status() {
+            let response= await fetch("/check_status", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        check_status()
+        
+        async function logout() {
+            const logout_text = document.querySelector(".logout");
+            logout_text.style.color = "red"; 
+
+            let response= await fetch("/logout", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        
+    </script>
+    <hr/>
+    <h2>快來留言吧</h2>
+    <div>
+        內容 <input type="text" class="content">
+        <button onclick="createMessage()">送出</button>
+    </div>
+    <script>
+        async function createMessage() {
+            let content = document.querySelector(".content").value;
+            if(!content){
+                alert("請輸入內容")
+            }
+            else{
+                let response = await fetch("/createMessage",{
+                    method:"POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body:JSON.stringify({"content":content})
+                });
+                let result = await response.json();
+                if(result.ok){
+                alert("留言成功");
+                window.location= "/member";
+                }
+                }
+            }
+    </script>
+
+    <hr/>
+    <!-- 留言板 -->
+    {% for message in messages %}
+    <div>{{ message[0] }}: {{ message[1] }} <button {% if message[3] == login_id %} style="display:block"{% else %} style="display:none"{% endif %}
+        class="button" onclick="deleteMessage(this.dataset.messageId)" data-message-id="{{message[2]}}">x</button></div>
+    {% endfor %}
+    <script>
+        async function deleteMessage(messageId) {
+            let response = await fetch("/deleteMessage",{
+                method:"POST",
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify({"messageId":messageId})                
+            })
+            let result = await response.json()
+            if(result.ok){
+            alert("刪除留言成功");
+            window.location="/member";
+            }
+        }
+    </script>
+</body>
+</html>
