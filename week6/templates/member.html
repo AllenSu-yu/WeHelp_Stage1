@@ -75,16 +75,20 @@
     {% endfor %}
     <script>
         async function deleteMessage(messageId) {
-            let response = await fetch("/deleteMessage",{
-                method:"POST",
-                headers:{"Content-Type": "application/json"},
-                body:JSON.stringify({"messageId":messageId})                
-            })
-            let result = await response.json()
-            if(result.ok){
-            alert("刪除留言成功");
-            window.location="/member";
-            }
+            if (confirm("確認要刪除這則訊息嗎?")){
+                let response = await fetch("/deleteMessage",{
+                    method:"POST",
+                    headers:{"Content-Type": "application/json"},
+                    body:JSON.stringify({"messageId":messageId})                
+                })
+                let result = await response.json()
+                if(result.ok){
+                alert("刪除留言成功");
+                window.location="/member";
+                }}
+                else{
+                    console.log("取消刪除")
+                }
         }
     </script>
 </body>
