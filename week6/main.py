@@ -29,43 +29,42 @@ async def index(request: Request):
 
 @app.post("/signup")
 async def signup(request: Request):
-    cursor.execute("SELECT * FROM member")
-    members=cursor.fetchall()
     body= await request.json()
     name=body["name"]
     email=body["email"]
     password=body["password"]
-    for member in members:
-        member_email=member[2]
-        if member_email == email:
-            return {"ok":False}
-        
-    cursor.execute("INSERT INTO member(name,email,password) VALUES(%s,%s,%s)", (name,email,password))
-    con.commit()
-    return {"ok":True}     
+    cursor.execute("SELECT * FROM member WHERE email=%s", [email,])
+    result=cursor.fetchone()
+    if result==None:  
+        cursor.execute("INSERT INTO member(name,email,password) VALUES(%s,%s,%s)", (name,email,password))
+        con.commit()
+        return {"ok":True}
+    else:
+        return {"ok":False}     
 
 
 
 @app.post("/login")
 async def login(request: Request):
-    cursor.execute("SELECT * FROM member")
-    members=cursor.fetchall()
     body= await request.json()
     email=body["email"]
     password=body["password"]
-    for member in members:
-        member_id=member[0]
-        member_name=member[1]
-        member_email=member[2]
-        member_password=member[3]
-        if member_email == email and member_password == password:
-            request.session["member"]={
-                "id":member_id,"name": member_name,"email":member_email, "password":member_password
-            }
-            return {"ok":True}
-    else:
+
+    cursor.execute("SELECT * FROM member WHERE email=%s AND password=%s", [email,password])
+    result=cursor.fetchone()
+    if result==None:
         request.session["member"]=None
         return {"ok":False}
+    else:   
+        member_id=result[0]
+        member_name=result[1]
+        member_email=result[2]
+        member_password=result[3]
+        request.session["member"]={
+            "id":member_id,"name": member_name,"email":member_email, "password":member_password
+        }
+        return {"ok":True}
+
 
 @app.get("/logout")
 async def logout(request: Request):
