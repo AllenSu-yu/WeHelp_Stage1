@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>歡迎光臨，這是會員頁</header>
+    <div id="welcome">{{name}}，歡迎登入系統</div>
+    <div onclick="logout()" class="logout">登出系統</div>
+    <script>
+        async function check_status() {
+            let response= await fetch("/check_status", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        check_status()
+        
+        async function logout() {
+            const logout_text = document.querySelector(".logout");
+            logout_text.style.color = "red"; 
+
+            let response= await fetch("/logout", {
+                method:"GET"
+            });
+            let result= await response.json();
+            if(result.ok){
+            }else{
+                window.location="/"
+            }
+            }
+        
+    </script>
+    <hr/>
+    <h2>查詢會員姓名</h2>
+    <div>
+        <div class="getMember">
+            <input type="text" id="member_id">
+            <button onclick="getMember()">查詢</button>
+            <div id="member_information"></div>
+        </div>
+    </div>
+    <script>
+        async function getMember() {
+            const member_id = document.querySelector("#member_id").value;
+            let response=await fetch("/api/member/"+member_id, {
+                method:"GET"
+            });
+            let result = await response.json();
+            if(result.data && result.data !== null){
+                let {id, name, email} = result.data;
+                document.getElementById("member_information").textContent = name+"("+email+")"
+            }else{
+                document.getElementById("member_information").textContent = "無此會員"
+            }
+        }
+    </script>
+    <h2>更新我的姓名</h2>
+    <div>
+        <div class="updateMember">
+            <input type="text" id="updateMember">
+            <button onclick="updateMember()">更新</button>
+            <div id="updateResult"></div>
+        </div>
+    </div>
+    <script>
+        async function updateMember() {
+            const new_name = document.querySelector("#updateMember").value;
+            let response = await fetch("/api/member", {
+                method:"PATCH",
+                headers:{"Content-Type": "application/json"},
+                body:JSON.stringify({"name":new_name})
+            });
+            let result = await response.json();
+            if(result.ok){
+                document.getElementById("welcome").textContent= new_name+"，歡迎登入系統";
+                document.getElementById("updateResult").textContent="更新成功"
+            }else{
+                document.getElementById("updateResult").textContent= "更新失敗";
+            }
+        }
+    </script>
+    <h2>誰查詢了我</h2>
+    <div>
+        <button class="queryHistory" onclick="queryHistory()">更新</button> <br/>
+    </div>
+    <div>           
+        <div id="queryHistory"></div>
+    </div>
+    <script>
+        async function queryHistory() {
+            document.getElementById("queryHistory").innerHTML = ""
+            let response = await fetch("/api/queryhistory", {
+                method:"GET"
+            });
+            let result = await response.json();
+            if(result != null && result.length>0){
+
+                for(let i = 0; i<result.length;i++){
+                    let {name, time} = result[i];
+                    document.getElementById("queryHistory").innerHTML += name+"("+time + ")<br/>";
+                    };
+                
+            }else{
+                document.getElementById("queryHistory").innerHTML = "查無紀錄";
+            }
+        }
+        
+    </script>
+</body>
+</html>
